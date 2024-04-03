@@ -11,7 +11,7 @@ import { DataGrid } from '@mui/x-data-grid';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
-
+import Spinner from 'react-spinkit';
 
 
 
@@ -114,7 +114,7 @@ function Category(props) {
 
         getData()
     }
-    
+
     const columns = [
         { field: 'category_name', headerName: 'Name', width: 130 },
         { field: 'category_description', headerName: 'Description', width: 130 },
@@ -140,69 +140,77 @@ function Category(props) {
 
     return (
         <div>
-            <React.Fragment>
-                <Button variant="outlined" onClick={handleClickOpen}>
-                    Add Category
-                </Button>
-                <Dialog
-                    open={open}
-                    onClose={handleClose}
+            {
+                Category.isLoading ? <p>
+                    <Spinner name="line-scale-pulse-out" color="aqua" />
+                </p> :
+                    <>
+                        <React.Fragment>
+                            <Button variant="outlined" onClick={handleClickOpen}>
+                                Add Category
+                            </Button>
+                            <Dialog
+                                open={open}
+                                onClose={handleClose}
 
-                >
-                    <DialogTitle>Category</DialogTitle>
-                    <form onSubmit={handleSubmit}>
-                        <DialogContent>
-                            <TextField
-                                margin="dense"
-                                id="category_name"
-                                name="category_name"
-                                label="Category Name"
-                                type="text"
-                                fullWidth
-                                variant="standard"
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                value={values.category_name}
-                                error={errors.category_name && touched.category_name ? true : false}
-                                helperText={errors.category_name && touched.category_name ? errors.category_name : ""}
+                            >
+                                <DialogTitle>Category</DialogTitle>
+                                <form onSubmit={handleSubmit}>
+                                    <DialogContent>
+                                        <TextField
+                                            margin="dense"
+                                            id="category_name"
+                                            name="category_name"
+                                            label="Category Name"
+                                            type="text"
+                                            fullWidth
+                                            variant="standard"
+                                            onChange={handleChange}
+                                            onBlur={handleBlur}
+                                            value={values.category_name}
+                                            error={errors.category_name && touched.category_name ? true : false}
+                                            helperText={errors.category_name && touched.category_name ? errors.category_name : ""}
 
+                                        />
+                                        <TextField
+                                            margin="dense"
+                                            id="category_description"
+                                            name="category_description"
+                                            label="Category Description"
+                                            type="text"
+                                            fullWidth
+                                            variant="standard"
+                                            onChange={handleChange}
+                                            onBlur={handleBlur}
+                                            value={values.category_description}
+                                            error={errors.category_description && touched.category_description ? true : false}
+                                            helperText={errors.category_description && touched.category_description ? errors.category_description : ""}
+                                        />
+                                        <DialogActions>
+                                            <Button onClick={handleClose}>Cancel</Button>
+                                            <Button type="submit">{update ? "Update" : "Add"}</Button>
+                                        </DialogActions>
+                                    </DialogContent>
+                                </form>
+                            </Dialog>
+                        </React.Fragment>
+
+                        <div style={{ width: '100%' }}>
+                            <DataGrid
+                                rows={data}
+                                columns={columns}
+                                initialState={{
+                                    pagination: {
+                                        paginationModel: { page: 0, pageSize: 5 },
+                                    },
+                                }}
+                                pageSizeOptions={[5, 10]}
+                                checkboxSelection
                             />
-                            <TextField
-                                margin="dense"
-                                id="category_description"
-                                name="category_description"
-                                label="Category Description"
-                                type="text"
-                                fullWidth
-                                variant="standard"
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                value={values.category_description}
-                                error={errors.category_description && touched.category_description ? true : false}
-                                helperText={errors.category_description && touched.category_description ? errors.category_description : ""}
-                            />
-                            <DialogActions>
-                                <Button onClick={handleClose}>Cancel</Button>
-                                <Button type="submit">{update ? "Update" : "Add"}</Button>
-                            </DialogActions>
-                        </DialogContent>
-                    </form>
-                </Dialog>
-            </React.Fragment>
+                        </div>
+                    </>
+            }
 
-            <div style={{ width: '100%' }}>
-                <DataGrid
-                    rows={data}
-                    columns={columns}
-                    initialState={{
-                        pagination: {
-                            paginationModel: { page: 0, pageSize: 5 },
-                        },
-                    }}
-                    pageSizeOptions={[5, 10]}
-                    checkboxSelection
-                />
-            </div>
 
         </div>
     );

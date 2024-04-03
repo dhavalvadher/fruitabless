@@ -15,10 +15,10 @@ import Facility from '../../admin/container/Facility/Facility';
 
 
 function AdminRoutes(props) {
-    const store = configstore()
+  
     return (
         <div>
-            <Provider store={store}>
+            
             <Layout>
                 <Routes>
                     <Route exact path="/Products" element={<Products />} />
@@ -28,7 +28,7 @@ function AdminRoutes(props) {
                     <Route exact path="/Facility" element={<Facility/>}/>
                 </Routes>
             </Layout>
-            </Provider>
+         
         </div>
     );
 }
