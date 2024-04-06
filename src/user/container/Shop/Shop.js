@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { getshop } from '../../../admin/component/redux/action/shop.action';
 
 function Shop(props) {
 
@@ -8,33 +10,40 @@ function Shop(props) {
   const [type, settype] = useState("");
   const [search, setSearch] = useState('');
 
+  const dispatch = useDispatch();
 
-  const getData = async () => {
-    try {
-      const response = await fetch("http://localhost:4000/fruits");
-      const data = await response.json();
+  const shop = useSelector(state => state.shop);
+  console.log(shop);
 
-      let filteredData = data;
-     
-      console.log(filteredData);
-      if (price !== "") {
-        filteredData = filteredData.filter((v) => v.price < parseInt(price));
-      }
-      if (type !== "") {
-        filteredData = filteredData.filter((v) => v.type === type);
-      }
+  // const getData = async () => {
+  //   try {
+  //     const response = await fetch("http://localhost:4000/fruits");
+  //     const data = await response.json();
 
-      console.log(type);
-      setFruitsData(filteredData);
-    } catch (error) {
-      console.log(error.message);
-    }
-  }
+  //     let filteredData = data;
 
-  
+  //     console.log(filteredData);
+  //     if (price !== "") {
+  //       filteredData = filteredData.filter((v) => v.price < parseInt(price));
+  //     }
+  //     if (type !== "") {
+  //       filteredData = filteredData.filter((v) => v.type === type);
+  //     }
+
+  //     console.log(type);
+  //     setFruitsData(filteredData);
+  //   } catch (error) {
+  //     console.log(error.message);
+  //   }
+  // }
+
+  // useEffect(() => {
+  //   dispatch(getshop())
+  // }, [])
 
   useEffect(() => {
-    getData();
+    // getData();
+    dispatch(getshop())
   }, [price, type])
 
 
@@ -224,7 +233,7 @@ function Shop(props) {
                 <div className="col-lg-9">
                   <div className="row g-4 justify-content-center">
                     {
-                      fdata.map((v) => (
+                      shop.fruits.map((v) => (
                         <div className="col-md-6 col-lg-6 col-xl-4">
                           <Link to={`/Shop/${v.id}`}>
                             <div className="rounded position-relative fruite-item">

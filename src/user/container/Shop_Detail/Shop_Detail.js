@@ -9,6 +9,7 @@ function Shop_Detail(props) {
   console.log(id);
   return (
     <div>
+      
       <div>
         {/* Single Page Header start */}
         <div className="container-fluid page-header py-5">
@@ -502,6 +503,7 @@ function Shop_Detail(props) {
 
 
     </div>
+    
   );
 }
 
