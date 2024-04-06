@@ -64,8 +64,7 @@ function Facility(props) {
     console.log(Facility);
 
     const handleDelete = (id) => {
-        console.log(id);
-        dispatch(Delete_data(id))
+       
     }
 
     const hendalEdit = (data) => {
@@ -103,7 +102,7 @@ function Facility(props) {
 
             {
                 Facility.isLoading ? <p>
-                <Spinner name="line-scale-pulse-out" color="aqua"/>
+                    <Spinner name="line-scale-pulse-out" color="aqua" />
                 </p> :
                     <>
                         <Button variant="outlined" onClick={handleClickOpen}>
@@ -152,30 +151,28 @@ function Facility(props) {
                             </form>
                         </Dialog>
                         <div style={{ width: '100%' }}>
-                <DataGrid
-                    rows={Facility.facility}
-                    columns={columns}
-                    initialState={{
-                        pagination: {
-                            paginationModel: { page: 0, pageSize: 5 },
-                        },
-                    }}
-                    pageSizeOptions={[5, 10, 100]}
-                    checkboxSelection
-                />
-            </div>
+                            <DataGrid
+                                rows={Facility.facility}
+                                columns={columns}
+                                initialState={{
+                                    pagination: {
+                                        paginationModel: { page: 0, pageSize: 5 },
+                                    },
+                                }}
+                                pageSizeOptions={[5, 10, 100]}
+                                checkboxSelection
+                            />
+                        </div>
                     </>
             }
-
-
-
-
-
-           
         </div>
     );
 }
 
 export default Facility;
+
+
+
+
 
 

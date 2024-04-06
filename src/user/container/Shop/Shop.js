@@ -31,6 +31,8 @@ function Shop(props) {
     }
   }
 
+  
+
   useEffect(() => {
     getData();
   }, [price, type])
@@ -270,3 +272,4 @@ function Shop(props) {
 }
 
 export default Shop;
+

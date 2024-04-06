@@ -5,6 +5,7 @@ import 'owl.carousel/dist/assets/owl.theme.default.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { Get_Facility } from '../../../admin/component/redux/action/facility.action';
 
+
 function Home(props) {
   let testimonial = {
 
@@ -47,8 +48,13 @@ function Home(props) {
     dispatch(Get_Facility());
   }, [])
 
+  // useEffect(() => {
+  //   dispatch(Get_Products());
+  // }, [])
+
   const Facility = useSelector(state => state.facilites)
   console.log(Facility);
+
 
   return (
     <div>
@@ -97,7 +103,7 @@ function Home(props) {
             <div className="row g-4">
               {
                 Facility.facility.map((v, i) => (
-                  <div className="col-md-6 col-lg-3"  key={i}>
+                  <div className="col-md-6 col-lg-3" key={i}>
                     <div className="featurs-item text-center rounded bg-light p-4">
                       <div className="featurs-icon btn-square rounded-circle bg-secondary mb-5 mx-auto">
                         <i className="fas fa-car-side fa-3x text-white" />
@@ -479,6 +485,19 @@ function Home(props) {
           </div>
         </div>
         {/* Fruits Shop End*/}
+
+
+
+
+
+
+
+
+
+
+
+
+
         {/* Featurs Start */}
         <div className="container-fluid service py-5">
           <div className="container py-5">

@@ -15,14 +15,14 @@ export const FacilitesReducer = (state=inistialState,action) => {
         case LOADING_FACILITY:
 
         return {
-            ...state,
+            ...state,   
+            
             isLoading: true 
         }
         case GET_FACILITY:
 
         return {
-            ...state,
-                
+            ...state,        
         }
         case ADD_Facility:
 

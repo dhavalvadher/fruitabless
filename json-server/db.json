@@ -63,5 +63,49 @@
             "price": 4.99,
             "image": "img/fruite-item-1.jpg"
         }
+    ],
+    "reviews": [
+        {
+            "id": 1,
+            "product_id": 1,
+            "name": "dhaval",
+            "email": "dhaval323@gmail.com",
+            "review": "super",
+            "rating": 5
+        },
+        {
+            "id": 2,
+            "product_id": 2,
+            "name": "karan",
+            "email": "karan323@gmail.com",
+            "review": "super",
+            "rating": 5
+        },
+        {
+            "id": 3,
+            "product_id": 3,
+            "name": "om",
+            "email": "om323@gmail.com",
+            "review": "super",
+            "rating": 5
+        },
+        {
+            "id": 4,
+            "product_id": 4,
+            "name": "bhim",
+            "email": "bhim323@gmail.com",
+            "review": "super",
+            "rating": 5
+        },
+        {
+            "id": 5,
+            "product_id": 5,
+            "name": "dhaval",
+            "email": "dhaval323@gmail.com",
+            "review": "super",
+            "rating": 5
+        }
+       
     ]
+
 }

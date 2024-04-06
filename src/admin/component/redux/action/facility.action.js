@@ -9,7 +9,7 @@ export const Facility_data = (data) => (dispatch) => {
     dispatch(handleLoading())
     setTimeout(() => {
         dispatch({ type: ADD_Facility, payload: data })
-    }, 6000);
+    },2000);
 
 }
 
