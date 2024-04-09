@@ -11,4 +11,5 @@ export const rootReducer = combineReducers({
     facilites: FacilitesReducer,
     products: productsReducer,
     shop: shopReducer
+    // shopdetail : shopdetailReducer
 })

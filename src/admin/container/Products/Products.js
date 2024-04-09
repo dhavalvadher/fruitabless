@@ -13,14 +13,14 @@ import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import Spinner from 'react-spinkit';
-import { getproducts } from '../../component/redux/action/products.action';
+import { addProducts, deleteProducts, editProducts, getproducts } from '../../component/redux/action/products.action';
 // import { DELETE_PRODUCTS } from '../../component/redux/ActionType';
 // import { Delete_data, Edit_data, Products_data } from '../../component/redux/action/product.action';
 
 
 function Products(props) {
   const [open, setOpen] = React.useState(false);
-  // const [update, setUpdate] = useState(false)
+  const [update, setUpdate] = useState(false)
 
   const dispatch = useDispatch();
 
@@ -52,7 +52,11 @@ function Products(props) {
     },
     validationSchema: ProductSchema,
     onSubmit: (values, { resetForm }) => {
-     
+      if (update) {
+        dispatch(editProducts(values))
+      } else {
+        dispatch(addProducts(values))
+      }
 
       resetForm();
       handleClose();
@@ -66,13 +70,13 @@ function Products(props) {
 
 
   const handleDelete = (id) => {
-
+    dispatch(deleteProducts(id));
   }
 
   const hendalEdit = (data) => {
-    // formik.setValues(data)
-    // setUpdate(true)
-    // setOpen(true)
+    formik.setValues(data)
+    setUpdate(true)
+    setOpen(true)
 
   }
 
@@ -107,9 +111,10 @@ function Products(props) {
     <div>
 
       {
-        Products.isLoading ? <p>
+      products.isLoading ? <p>
           <Spinner name="line-scale-pulse-out" color="aqua" />
         </p> :
+        products.error ? <p>{products.error}</p> :
           <>
             <Button variant="outlined" onClick={handleClickOpen}>
               Add Product
@@ -164,7 +169,7 @@ function Products(props) {
                   />
                   <DialogActions>
                     <Button onClick={handleClose}>Cancel</Button>
-                    <Button type="submit">ADD</Button>
+                    <Button type="submit">{update ? "Update" : "add"}</Button>
                   </DialogActions>
 
                 </DialogContent>
