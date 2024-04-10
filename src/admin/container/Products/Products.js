@@ -24,7 +24,7 @@ function Products(props) {
 
   const dispatch = useDispatch();
 
-  React.useEffect(() => {
+  useEffect(() => {
     dispatch(getproducts())
   }, [])
 
@@ -98,8 +98,6 @@ function Products(props) {
           </IconButton>
         </>
       )
-
-
     },
   ];
 
@@ -182,7 +180,7 @@ function Products(props) {
                 columns={columns}
                 initialState={{
                   pagination: {
-                    paginationModel: { page: 0, pageSize: 5 },
+                    paginationModel: { page: 0, pageSize: 10 },
                   },
                 }}
                 pageSizeOptions={[5, 10, 100]}

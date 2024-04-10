@@ -2,14 +2,14 @@
   "fruits": [
     {
       "id": "2",
-      "name": "Grapesssssssssssssss",
+      "name": "Grapes",
       "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
       "price": 2.99,
       "image": "img/fruite-item-5.jpg"
     },
     {
       "id": "3",
-      "name": "Raspberriesssss",
+      "name": "Raspberries",
       "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
       "price": 3.99,
       "image": "img/fruite-item-2.jpg"
@@ -50,22 +50,16 @@
       "image": "img/fruite-item-1.jpg"
     },
     {
-      "id": "2b5d",
+      "id": "fd10",
       "name": "ABCDE",
-      "description": "nnijnunn",
-      "price": 900
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
+      "price": 1450
     },
     {
-      "id": "c372",
-      "name": "ABCDE",
-      "description": "nnijnunn",
+      "id": "b1a5",
+      "name": "DHAVAL",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
       "price": 450
-    },
-    {
-      "id": "10ee",
-      "name": "ABCDE",
-      "description": "dhavaal",
-      "price": 12222222
     }
   ],
   "reviews": [
