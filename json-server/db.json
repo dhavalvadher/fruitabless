@@ -2,7 +2,7 @@
   "fruits": [
     {
       "id": "2",
-      "name": "Grapes",
+      "name": "Grapesssssssssssssssssss",
       "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
       "price": 2.99,
       "image": "img/fruite-item-5.jpg"
@@ -64,44 +64,10 @@
   ],
   "reviews": [
     {
-      "id": "1",
-      "product_id": 1,
-      "name": "dhaval",
-      "email": "dhaval323@gmail.com",
-      "review": "super",
-      "rating": 5
-    },
-    {
-      "id": "2",
-      "product_id": 2,
-      "name": "karan",
-      "email": "karan323@gmail.com",
-      "review": "super",
-      "rating": 5
-    },
-    {
-      "id": "3",
-      "product_id": 3,
-      "name": "om",
-      "email": "om323@gmail.com",
-      "review": "super",
-      "rating": 5
-    },
-    {
-      "id": "4",
-      "product_id": 4,
-      "name": "bhim",
-      "email": "bhim323@gmail.com",
-      "review": "super",
-      "rating": 5
-    },
-    {
-      "id": "5",
-      "product_id": 5,
-      "name": "dhaval",
-      "email": "dhaval323@gmail.com",
-      "review": "super",
-      "rating": 5
+      "id": "838f",
+      "name": "VWXYZ",
+      "email": "kayan444@gmail.com",
+      "review": "dhavalllll"
     }
   ]
 }
