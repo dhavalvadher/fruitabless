@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { addToCart } from '../../../admin/component/redux/action/addcart.action';
+import { useDispatch } from 'react-redux';
 
 
 
@@ -13,6 +15,16 @@ function Shop_Detail(props) {
     useEffect(() => {
       getData();
     }, []);
+
+
+    const dispatch = useDispatch();
+
+  const addcarddata = useSelector(state => state.cart)
+  console.log(addcarddata);
+
+  useEffect(() => {
+    dispatch(getcart())
+  }, [])
 
     const getData = async () => {
       const respons = await fetch("http://localhost:4000/fruits");
@@ -60,36 +72,37 @@ function Shop_Detail(props) {
                       </a>
                     </div>
                   </div> */}
-                  <div className="col-lg-6">
-                    <h4 className="fw-bold mb-3">{fruits?.name}</h4>
-                    <p className="mb-3">Category: Vegetables</p>
-                    <h5 className="fw-bold mb-3">{fruits?.price} $</h5>
-                    <div className="d-flex mb-4">
-                      <i className="fa fa-star text-secondary" />
-                      <i className="fa fa-star text-secondary" />
-                      <i className="fa fa-star text-secondary" />
-                      <i className="fa fa-star text-secondary" />
-                      <i className="fa fa-star" />
-                    </div>
-                    <p className="mb-4">{fruits?.description}</p>
-                    <p className="mb-4">Susp endisse ultricies nisi vel quam suscipit. Sabertooth
-                    peacock flounder; chain pickerel hatchetfish, pencilfish
-                    snailfish</p>
-                    <div className="input-group quantity mb-5" style={{ width: 100 }}>
-                      <div className="input-group-btn">
-                        <button className="btn btn-sm btn-minus rounded-circle bg-light border">
-                          <i className="fa fa-minus" />
-                        </button>
-                      </div>
-                      <input type="text" className="form-control form-control-sm text-center border-0" defaultValue={1} />
-                      <div className="input-group-btn">
-                        <button className="btn btn-sm btn-plus rounded-circle bg-light border">
-                          <i className="fa fa-plus" />
-                        </button>
-                      </div>
-                    </div>
-                    <a href="#" className="btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary"><i className="fa fa-shopping-bag me-2 text-primary" /> Add to cart</a>
-                  </div>
+                  {
+                     addcarddata.cart.map((v, index) => (<div className="col-lg-6">
+                     <h4 className="fw-bold mb-3">{fruits?.name}</h4>
+                     <p className="mb-3">Category: Vegetables</p>
+                     <h5 className="fw-bold mb-3">{fruits?.price} $</h5>
+                     <div className="d-flex mb-4">
+                       <i className="fa fa-star text-secondary" />
+                       <i className="fa fa-star text-secondary" />
+                       <i className="fa fa-star text-secondary" />
+                       <i className="fa fa-star text-secondary" />
+                       <i className="fa fa-star" />
+                     </div>
+                     <p className="mb-4">{fruits?.description}</p>
+                     <p className="mb-4">Susp endisse ultricies nisi vel quam suscipit. Sabertooth peacock flounder; chain pickerel hatchetfish, pencilfish snailfish</p>
+                     <div className="input-group quantity mb-5" style={{ width: 100 }}>
+                       <div className="input-group-btn">
+                         <button className="btn btn-sm btn-minus rounded-circle bg-light border">
+                           <i className="fa fa-minus" />
+                         </button>
+                       </div>
+                       <input type="text" className="form-control form-control-sm text-center border-0" defaultValue={1} />
+                       <div className="input-group-btn">
+                         <button className="btn btn-sm btn-plus rounded-circle bg-light border">
+                           <i className="fa fa-plus" />
+                         </button>
+                       </div>
+                     </div>
+                     <button onClick={handleAddToCart} className="btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary"><i className="fa fa-shopping-bag me-2 text-primary" /> Add to cart</button>
+                   </div>))
+                  }
+                 
                   <div className="col-lg-12">
                     <nav>
                       <div className="nav nav-tabs mb-3">

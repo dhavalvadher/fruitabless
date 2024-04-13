@@ -45,3 +45,14 @@ export const GET_SHOP = "GET_SHOP"
     export const LOADING_REVIEWS = "LOADING_REVIEWS"
 
     export const ERROR_REVIEWS = "ERROR_REVIEWS"        
+
+
+
+
+
+
+    // actionTypes.js
+
+export const ADDTOCART = 'ADDTOCART';
+export const GETCARTDATA = 'GETCARTDATA';
+
