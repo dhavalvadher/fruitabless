@@ -34,14 +34,14 @@ export const GET_SHOP = "GET_SHOP"
 
 //---------------------------//     
 
-export const ADD_REVIEWS = "ADD_REVIEWS"
+    export const ADD_REVIEWS = "ADD_REVIEWS"
 
-export const GET_REVIEWS = "GET_REVIEWS"
+    export const GET_REVIEWS = "GET_REVIEWS"
 
-export const DELETE_REVIEWS = "DELETE_REVIEWS"
+    export const DELETE_REVIEWS = "DELETE_REVIEWS"
 
-export const EDIT_REVIEWS = "EDIT_REVIEWS"
+    export const EDIT_REVIEWS = "EDIT_REVIEWS"
 
-export const LOADING_REVIEWS = "LOADING_REVIEWS"
+    export const LOADING_REVIEWS = "LOADING_REVIEWS"
 
-export const ERROR_REVIEWS = "ERROR_REVIEWS"
+    export const ERROR_REVIEWS = "ERROR_REVIEWS"        

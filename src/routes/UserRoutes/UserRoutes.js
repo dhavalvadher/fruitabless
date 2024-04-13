@@ -12,6 +12,7 @@ import Page from '../../user/container/Page/Page';
 import Contact from '../../user/container/Contact/Contact';
 import PrivateRoutes from '../PrivateRoutes/PrivateRoutes';
 import Reviews from '../../user/container/Reviews/Reviews';
+// import Counterd from '../../user/container/Counterd/Counterd';
 
 
 
@@ -35,6 +36,7 @@ function UserRoutes(props) {
                     <Route exact path='/Page' element={<Page />} />
                     <Route exact path='/Contact' element={<Contact />} />
                     <Route exact path='/Reviews' element={<Reviews />} />
+                    {/* <Route exact path='/Counterd' element={<Counterd />} /> */}
                 </Routes>
                 <Footer />
             </>

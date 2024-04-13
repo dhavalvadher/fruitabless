@@ -20,3 +20,14 @@ export const configstore = () => {
     return { store, persistor }
 }
 
+
+
+
+
+
+// import { configureStore } from '@reduxjs/toolkit'
+// import counterSlice from './counterSlice'
+
+// export const store = configureStore({
+//   reducer: {counter : counterSlice},
+// })

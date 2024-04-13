@@ -24,6 +24,7 @@ import CategoryIcon from '@mui/icons-material/Category';
 import { NavLink } from 'react-router-dom';
 import HourglassFullIcon from '@mui/icons-material/HourglassFull';
 import BreakfastDiningIcon from '@mui/icons-material/BreakfastDining';
+import AddCircleIcon from '@mui/icons-material/AddCircle';
 
 const drawerWidth = 240;
 
@@ -108,7 +109,8 @@ export default function Layout({children}) {
     {title:"reviews",icon:<RateReviewIcon/>,to:"/admin/Reviews"},
     {title:"Categories",icon:<CategoryIcon/>,to:"/admin/Category"},
     {title:"Counter",icon:<HourglassFullIcon/>,to:"/admin/Counter"},
-    {title:"Facility",icon:<BreakfastDiningIcon/>,to:"/admin/Facility"}
+    {title:"Facility",icon:<BreakfastDiningIcon/>,to:"/admin/Facility"},
+    // {title:"Counter-toolkit",icon:<AddCircleIcon/>,to:"/admin/Counterd"}
   ]
 
   return (
