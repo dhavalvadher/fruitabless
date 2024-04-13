@@ -1,14 +1,44 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { addToCart } from '../../../admin/component/redux/action/addcart.action';
+import { useDispatch } from 'react-redux';
+
 
 
 function Shop_Detail(props) {
 
   const { id } = useParams();
+  const [fruits, setFruits] = useState({});
+  console.log(fruits)
 
-  console.log(id);
+  try {
+    useEffect(() => {
+      getData();
+    }, []);
+
+
+    const dispatch = useDispatch();
+
+  const addcarddata = useSelector(state => state.cart)
+  console.log(addcarddata);
+
+  useEffect(() => {
+    dispatch(getcart())
+  }, [])
+
+    const getData = async () => {
+      const respons = await fetch("http://localhost:4000/fruits");
+      const data = await respons.json();
+
+      const shopDetailsData = data.find((v) => v.id == id);
+
+      setFruits(shopDetailsData);
+    };
+  } catch (error) { }
+
   return (
     <div>
+
       <div>
         {/* Single Page Header start */}
         <div className="container-fluid page-header py-5">
@@ -20,6 +50,7 @@ function Shop_Detail(props) {
           </ol>
         </div>
         {/* Single Page Header End */}
+
         {/* Single Product Start */}
         <div className="container-fluid py-5 mt-5">
           <div className="container py-5">
@@ -29,38 +60,49 @@ function Shop_Detail(props) {
                   <div className="col-lg-6">
                     <div className="border rounded">
                       <a href="#">
-                        <img src="img/single-item.jpg" className="img-fluid rounded" alt="Image" />
+                        <img src={`../${fruits?.image}`} className="img-fluid rounded" alt="Image" />
                       </a>
                     </div>
                   </div>
-                  <div className="col-lg-6">
-                    <h4 className="fw-bold mb-3">Brocoli</h4>
-                    <p className="mb-3">Category: Vegetables</p>
-                    <h5 className="fw-bold mb-3">3,35 $</h5>
-                    <div className="d-flex mb-4">
-                      <i className="fa fa-star text-secondary" />
-                      <i className="fa fa-star text-secondary" />
-                      <i className="fa fa-star text-secondary" />
-                      <i className="fa fa-star text-secondary" />
-                      <i className="fa fa-star" />
+
+                  {/* <div className="col-lg-6">
+                    <div className="border rounded">
+                      <a href="#">    
+                        <img src="img/single-item.jpg" className="img-fluid rounded" alt="Image" />
+                      </a>
                     </div>
-                    <p className="mb-4">The generated Lorem Ipsum is therefore always free from repetition injected humour, or non-characteristic words etc.</p>
-                    <p className="mb-4">Susp endisse ultricies nisi vel quam suscipit. Sabertooth peacock flounder; chain pickerel hatchetfish, pencilfish snailfish</p>
-                    <div className="input-group quantity mb-5" style={{ width: 100 }}>
-                      <div className="input-group-btn">
-                        <button className="btn btn-sm btn-minus rounded-circle bg-light border">
-                          <i className="fa fa-minus" />
-                        </button>
-                      </div>
-                      <input type="text" className="form-control form-control-sm text-center border-0" defaultValue={1} />
-                      <div className="input-group-btn">
-                        <button className="btn btn-sm btn-plus rounded-circle bg-light border">
-                          <i className="fa fa-plus" />
-                        </button>
-                      </div>
-                    </div>
-                    <a href="#" className="btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary"><i className="fa fa-shopping-bag me-2 text-primary" /> Add to cart</a>
-                  </div>
+                  </div> */}
+                  {
+                     addcarddata.cart.map((v, index) => (<div className="col-lg-6">
+                     <h4 className="fw-bold mb-3">{fruits?.name}</h4>
+                     <p className="mb-3">Category: Vegetables</p>
+                     <h5 className="fw-bold mb-3">{fruits?.price} $</h5>
+                     <div className="d-flex mb-4">
+                       <i className="fa fa-star text-secondary" />
+                       <i className="fa fa-star text-secondary" />
+                       <i className="fa fa-star text-secondary" />
+                       <i className="fa fa-star text-secondary" />
+                       <i className="fa fa-star" />
+                     </div>
+                     <p className="mb-4">{fruits?.description}</p>
+                     <p className="mb-4">Susp endisse ultricies nisi vel quam suscipit. Sabertooth peacock flounder; chain pickerel hatchetfish, pencilfish snailfish</p>
+                     <div className="input-group quantity mb-5" style={{ width: 100 }}>
+                       <div className="input-group-btn">
+                         <button className="btn btn-sm btn-minus rounded-circle bg-light border">
+                           <i className="fa fa-minus" />
+                         </button>
+                       </div>
+                       <input type="text" className="form-control form-control-sm text-center border-0" defaultValue={1} />
+                       <div className="input-group-btn">
+                         <button className="btn btn-sm btn-plus rounded-circle bg-light border">
+                           <i className="fa fa-plus" />
+                         </button>
+                       </div>
+                     </div>
+                     <button onClick={handleAddToCart} className="btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary"><i className="fa fa-shopping-bag me-2 text-primary" /> Add to cart</button>
+                   </div>))
+                  }
+                 
                   <div className="col-lg-12">
                     <nav>
                       <div className="nav nav-tabs mb-3">
@@ -197,7 +239,6 @@ function Shop_Detail(props) {
                               <i className="fa fa-star" />
                             </div>
                           </div>
-                          <a href="#" className="btn border border-secondary text-primary rounded-pill px-4 py-3"> Post Comment</a>
                         </div>
                       </div>
                     </div>
@@ -502,6 +543,7 @@ function Shop_Detail(props) {
 
 
     </div>
+
   );
 }
 
