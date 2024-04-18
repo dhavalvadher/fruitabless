@@ -1,10 +1,11 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { decrement, increment } from '../../component/redux/action/counter.action';
+import { decrement, increment } from '../../component/redux/slice/counter.slice';
+
 
 function Conter(props) {
 
-    const incdec = useSelector(state => state.counter)
+    const incdec = useSelector(state => state.counter_slice)
     console.log(incdec);
 
     const dispatch = useDispatch();

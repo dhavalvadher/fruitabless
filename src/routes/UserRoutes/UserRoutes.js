@@ -12,8 +12,7 @@ import Page from '../../user/container/Page/Page';
 import Contact from '../../user/container/Contact/Contact';
 import PrivateRoutes from '../PrivateRoutes/PrivateRoutes';
 import Reviews from '../../user/container/Reviews/Reviews';
-import Addcart from '../../admin/container/Addcart/Addcart';
-// import Counterd from '../../user/container/Counterd/Counterd';
+
 
 
 
@@ -37,11 +36,7 @@ function UserRoutes(props) {
                     <Route exact path='/Page' element={<Page />} />
                     <Route exact path='/Contact' element={<Contact />} />
                     <Route exact path='/Reviews' element={<Reviews />} />
-                    {/* <Route exact path='/Counterd' element={<Counterd />} /> */}
-
-
-                    <Route exact path='/Addcart/:id ' element={<Addcart />} />
-                    <Route exact path='/Shop_Detail' element={<Shop_Detail />} />
+                    
                 </Routes>
                 <Footer />
             </>

@@ -1,19 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { getshop } from '../../../admin/component/redux/action/shop.action';
+import { getproducts } from '../../../admin/component/redux/action/products.action';
+// import { getshop } from '../../../admin/component/redux/action/shop.action';
 
 function Shop(props) {
 
-  const [fruitsData, setFruitsData] = useState([]);
-  const [price, setPrice] = useState("");
-  const [type, settype] = useState("");
-  const [search, setSearch] = useState('');
+  // const [fruitsData, setFruitsData] = useState([]);
+  // const [price, setPrice] = useState("");
+  // const [type, settype] = useState("");
+  // const [search, setSearch] = useState('');
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  const shop = useSelector(state => state.shop);
-  console.log(shop);
+  // const shop = useSelector(state => state.shop);
+  // console.log(shop);
 
   // const getData = async () => {
   //   try {
@@ -41,23 +42,31 @@ function Shop(props) {
   //   dispatch(getshop())
   // }, [])
 
+  const products = useSelector(state => state.products);
+  const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   // getData();
+  //   dispatch(getproducts())
+  // }, [price, type])
+
   useEffect(() => {
-    // getData();
-    dispatch(getshop())
-  }, [price, type])
+  
+    dispatch(getproducts())
+  }, [])
 
 
-  const handleFilter = () => {
-    let fdata = fruitsData.filter((v) =>
-      v.name.toLowerCase().includes(search.toLowerCase()) ||
-      v.price.toString().includes(search)
-    );
+  // const handleFilter = () => {
+  //   let fdata = fruitsData.filter((v) =>
+  //     v.name.toLowerCase().includes(search.toLowerCase()) ||
+  //     v.price.toString().includes(search)
+  //   );
 
 
-    return fdata;
-  };
+  //   return fdata;
+  // };
 
-  const fdata = handleFilter();
+  // const fdata = handleFilter();
 
 
   return (
@@ -74,8 +83,8 @@ function Shop(props) {
                   <div className="input-group w-100 mx-auto d-flex">
                     <input
                       name='search'
-                      value={search}
-                      onChange={(event) => setSearch(event.target.value)}
+                      // value={search}
+                      // onChange={(event) => setSearch(event.target.value)}
                       type="search"
                       className="form-control p-3"
                       placeholder="keywords"
@@ -139,7 +148,8 @@ function Shop(props) {
                     <div className="col-lg-12">
                       <div className="mb-3">
                         <h4 className="mb-2">Price</h4>
-                        <input type="range" onChange={(event) => setPrice(event.target.value)} className="form-range w-100" id="rangeInput" name="rangeInput" min={0} max={10} defaultValue={0} oninput="amount.value=rangeInput.value" />
+                        {/* <input type="range" onChange={(event) => setPrice(event.target.value)} className="form-range w-100" id="rangeInput" name="rangeInput" min={0} max={10} defaultValue={0} oninput="amount.value=rangeInput.value" /> */}
+                        <input type="range" className="form-range w-100" id="rangeInput" name="rangeInput" min={0} max={10} defaultValue={0} oninput="amount.value=rangeInput.value" />
                         <output id="amount" name="amount" min-velue={0} max-value={10} htmlFor="rangeInput">0</output>
 
                       </div>
@@ -232,8 +242,31 @@ function Shop(props) {
                 </div>
                 <div className="col-lg-9">
                   <div className="row g-4 justify-content-center">
-                    {
+                    {/* {
                       shop.fruits.map((v) => (
+                        <div className="col-md-6 col-lg-6 col-xl-4">
+                          <Link to={`/Shop/${v.id}`}>
+                            <div className="rounded position-relative fruite-item">
+                              <div className="fruite-img">
+                                <img src={v.image} className="img-fluid w-100 rounded-top" alt />
+                              </div>
+                              <div className="text-white bg-secondary px-3 py-1 rounded position-absolute" style={{ top: 10, left: 10 }}>Fruits</div>
+                              <div className="p-4 border border-secondary border-top-0 rounded-bottom">
+                                <h4>{v.name}</h4>
+                                <p>{v.description}</p>
+                                <div className="d-flex justify-content-between flex-lg-wrap">
+                                  <p className="text-dark fs-5 fw-bold mb-0">${v.price} / kg</p>
+                                  <a href="#" className="btn border border-secondary rounded-pill px-3 text-primary"><i className="fa fa-shopping-bag me-2 text-primary" /> Add to cart</a>
+                                </div>
+                              </div>
+                            </div>
+                          </Link>
+                        </div>
+                      ))
+                    } */}
+
+{
+                      products.products.map((v) => (
                         <div className="col-md-6 col-lg-6 col-xl-4">
                           <Link to={`/Shop/${v.id}`}>
                             <div className="rounded position-relative fruite-item">

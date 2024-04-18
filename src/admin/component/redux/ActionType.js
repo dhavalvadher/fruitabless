@@ -53,6 +53,6 @@ export const GET_SHOP = "GET_SHOP"
 
     // actionTypes.js
 
-export const ADDTOCART = 'ADDTOCART';
-export const GETCARTDATA = 'GETCARTDATA';
+// export const ADDTOCART = 'ADDTOCART';
+// export const GETCARTDATA = 'GETCARTDATA';
 
