@@ -13,9 +13,8 @@ import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import Spinner from 'react-spinkit';
-import { addProducts, deleteProducts, editProducts, getproducts } from '../../component/redux/action/products.action';
-// import { DELETE_PRODUCTS } from '../../component/redux/ActionType';
-// import { Delete_data, Edit_data, Products_data } from '../../component/redux/action/product.action';
+import { addProducts, deleteProducts, editProducts, getproducts } from '../../../redux/action/products.action';
+
 
 
 function Products(props) {

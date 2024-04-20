@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { decrementQty, incrementQty, removeProducts } from '../../../admin/component/redux/slice/cart.slice';
+import { decrementQty, incrementQty, removeProducts } from '../../../redux/slice/cart.slice';
 
 function Card(props) {
 
@@ -23,13 +23,28 @@ function Card(props) {
   const handleInc = (id) => {
     dispatch(incrementQty(id))
   }
+  // const handleDec = (id) => {
+  //   dispatch(decrementQty(id))
+  // }
+
   const handleDec = (id) => {
-    dispatch(decrementQty(id))
-  }
+    const pIndex = productsdata.findIndex((p) => p.id === id);
+    const currentQty = productsdata[pIndex].qty;
+    
+    if (currentQty === 1) {
+      return;
+    }
+  
+    dispatch(decrementQty(id));
+  };
+  
 
   const handleremove = (id) => {
     dispatch(removeProducts(id))
   }
+
+  const Total = productsdata.reduce((acc, v) => acc + v.qty * v.price, 0);
+  const total = Total * 1
 
 
   return (
@@ -94,7 +109,7 @@ function Card(props) {
                             </div>
                           </div>
                         </td>
-                        {/* task */}
+                       
                         <td>
                           <p className="mb-0 mt-4">{p.price * p.qty} $</p>
                         </td>
@@ -108,78 +123,7 @@ function Card(props) {
                     ))
                   }
 
-                  {/* <tr>
-                    <th scope="row">
-                      <div className="d-flex align-items-center">
-                        <img src="img/vegetable-item-5.jpg" className="img-fluid me-5 rounded-circle" style={{ width: 80, height: 80 }} alt />
-                      </div>
-                    </th>
-                    <td>
-                      <p className="mb-0 mt-4">Potatoes</p>
-                    </td>
-                    <td>
-                      <p className="mb-0 mt-4">2.99 $</p>
-                    </td>
-                    <td>
-                      <div className="input-group quantity mt-4" style={{ width: 100 }}>
-                        <div className="input-group-btn">
-                          <button className="btn btn-sm btn-minus rounded-circle bg-light border">
-                            <i className="fa fa-minus" />
-                          </button>
-                        </div>
-                        <input type="text" className="form-control form-control-sm text-center border-0" defaultValue={1} />
-                        <div className="input-group-btn">
-                          <button className="btn btn-sm btn-plus rounded-circle bg-light border">
-                            <i className="fa fa-plus" />
-                          </button>
-                        </div>
-                      </div>
-                    </td>
-                    <td>
-                      <p className="mb-0 mt-4">2.99 $</p>
-                    </td>
-                    <td>
-                      <button className="btn btn-md rounded-circle bg-light border mt-4">
-                        <i className="fa fa-times text-danger" />
-                      </button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">
-                      <div className="d-flex align-items-center">
-                        <img src="img/vegetable-item-2.jpg" className="img-fluid me-5 rounded-circle" style={{ width: 80, height: 80 }} alt />
-                      </div>
-                    </th>
-                    <td>
-                      <p className="mb-0 mt-4">Awesome Brocoli</p>
-                    </td>
-                    <td>
-                      <p className="mb-0 mt-4">2.99 $</p>
-                    </td>
-                    <td>
-                      <div className="input-group quantity mt-4" style={{ width: 100 }}>
-                        <div className="input-group-btn">
-                          <button className="btn btn-sm btn-minus rounded-circle bg-light border">
-                            <i className="fa fa-minus" />
-                          </button>
-                        </div>
-                        <input type="text" className="form-control form-control-sm text-center border-0" defaultValue={1} />
-                        <div className="input-group-btn">
-                          <button className="btn btn-sm btn-plus rounded-circle bg-light border">
-                            <i className="fa fa-plus" />
-                          </button>
-                        </div>
-                      </div>
-                    </td>
-                    <td>
-                      <p className="mb-0 mt-4">2.99 $</p>
-                    </td>
-                    <td>
-                      <button className="btn btn-md rounded-circle bg-light border mt-4">
-                        <i className="fa fa-times text-danger" />
-                      </button>
-                    </td>
-                  </tr> */}
+                  
                 </tbody>
               </table>
             </div>
@@ -195,7 +139,7 @@ function Card(props) {
                     <h1 className="display-6 mb-4">Cart <span className="fw-normal">Total</span></h1>
                     <div className="d-flex justify-content-between mb-4">
                       <h5 className="mb-0 me-4">Subtotal:</h5>
-                      <p className="mb-0">$96.00</p>
+                      <p className="mb-0">${total}</p>
                     </div>
                     <div className="d-flex justify-content-between">
                       <h5 className="mb-0 me-4">Shipping</h5>
@@ -207,7 +151,7 @@ function Card(props) {
                   </div>
                   <div className="py-4 mb-4 border-top border-bottom d-flex justify-content-between">
                     <h5 className="mb-0 ps-4 me-4">Total</h5>
-                    <p className="mb-0 pe-4">$99.00</p>
+                    <p className="mb-0 pe-4">${total + 3}</p>
                   </div>
                   <button className="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4" type="button">Proceed Checkout</button>
                 </div>

@@ -1,10 +1,10 @@
-import logo from './logo.svg';
+
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import UserRoutes from './routes/UserRoutes/UserRoutes';
 import AdminRoutes from './routes/AdminRoutes/AdminRoutes';
 import PrivateRoutes from './routes/PrivateRoutes/PrivateRoutes';
-import { configstore } from './admin/component/redux/store';
+import { configstore } from './redux/store';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react'
 

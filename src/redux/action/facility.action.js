@@ -1,4 +1,8 @@
-import { ADD_Facility, DELETE_FACILITY, EDIT_FACILITY, GET_FACILITY, LOADING_FACILITY } from "../ActionType"
+// import { ADD_Facility, DELETE_FACILITY, EDIT_FACILITY, GET_FACILITY, LOADING_FACILITY } from "../ActionType"
+
+import { LOADING_FACILITY,ADD_Facility, DELETE_FACILITY, EDIT_FACILITY, GET_FACILITY } from "../ActionType";
+
+
 
 
 const handleLoading = (data) => (dispatch) => {

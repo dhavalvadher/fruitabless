@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { decrement, increment } from '../../component/redux/slice/counter.slice';
+import { decrement, increment } from '../../../redux/slice/counter.slice';
+// import { decrement, increment } from '../../component/redux/slice/counter.slice';
 
 
 function Conter(props) {

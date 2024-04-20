@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { addToCart } from '../../../admin/component/redux/slice/cart.slice';
+import { addToCart, decrementQty, incrementQty } from '../../../redux/slice/cart.slice';
+
 
 
 
@@ -10,6 +11,9 @@ function Shop_Detail(props) {
   const { id } = useParams();
   const [fruits, setFruits] = useState({});
   console.log(fruits)
+
+
+  const [count, setCount] = useState(1);
 
 
   const cart = useSelector(state => state.cart)
@@ -34,8 +38,22 @@ function Shop_Detail(props) {
   const dispatch = useDispatch();
 
   const handleAddtoCart = () => {
-    dispatch(addToCart(id))
+    dispatch(addToCart({id,count}))
   }
+
+  const handleInc = () => {
+    setCount(Prev => Prev + 1)
+  }
+
+  const handleDec = () => {
+    if (count > 1) {
+      setCount(Prev => Prev - 1)
+    }
+
+  }
+
+  // const qty = useSelector((state) => cart.cart.reduce((v, acc) => v + acc.qty, 0));
+  // console.log(qty);
 
   return (
     <div>
@@ -86,21 +104,40 @@ function Shop_Detail(props) {
                     </div>
                     <p className="mb-4">{fruits?.description}</p>
                     <p className="mb-4">Susp endisse ultricies nisi vel quam suscipit. Sabertooth peacock flounder; chain pickerel hatchetfish, pencilfish snailfish</p>
-                    <div className="input-group quantity mb-5" style={{ width: 100 }}>
+                    {/* <div className="input-group quantity mb-5" style={{ width: 100 }}>
                       <div className="input-group-btn">
-                        <button className="btn btn-sm btn-minus rounded-circle bg-light border">
+                        <button onClick={handleDec} className="btn btn-sm btn-minus rounded-circle bg-light border">
                           <i className="fa fa-minus" />
                         </button>
                       </div>
-                      <input type="text" className="form-control form-control-sm text-center border-0" defaultValue={1} />
+                      <span className="form-control form-control-sm text-center border-0" value={qty}>
+                        {qty}
+                      </span>
                       <div className="input-group-btn">
-                        <button className="btn btn-sm btn-plus rounded-circle bg-light border">
+                        <button onClick={handleInc} className="btn btn-sm btn-plus rounded-circle bg-light border">
+                          <i className="fa fa-plus" />
+                        </button>
+                      </div>
+                    </div> */}
+
+
+                    <div className="input-group quantity mb-5" style={{ width: 100 }}>
+                      <div className="input-group-btn">
+                        <button onClick={handleDec} className="btn btn-sm btn-minus rounded-circle bg-light border">
+                          <i className="fa fa-minus" />
+                        </button>
+                      </div>
+                      <span className="form-control form-control-sm text-center border-0">
+                        {count}
+                      </span>
+                      <div className="input-group-btn">
+                        <button onClick={handleInc} className="btn btn-sm btn-plus rounded-circle bg-light border">
                           <i className="fa fa-plus" />
                         </button>
                       </div>
                     </div>
                     <a href="#" className="btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary"
-                    onClick={handleAddtoCart}><i className="fa fa-shopping-bag me-2 text-primary" /> Add to cart</a>
+                      onClick={handleAddtoCart}><i className="fa fa-shopping-bag me-2 text-primary" /> Add to cart</a>
                   </div>
 
 

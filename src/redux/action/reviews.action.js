@@ -1,13 +1,19 @@
 
 import axios from 'axios';
-import { baseURL } from '../../../../Utils/baseURL';
-import {  DELETE_REVIEWS, EDIT_REVIEWS, ERROR_REVIEWS, GET_REVIEWS, LOADING_REVIEWS } from '../ActionType';
+import { LOADING_REVIEWS, DELETE_REVIEWS , EDIT_REVIEWS, ERROR_REVIEWS, GET_REVIEWS } from '../ActionType';
+import { baseURL } from '../../Utils/baseURL';
+
+// import { DELETE_REVIEWS , EDIT_REVIEWS, ERROR_REVIEWS, GET_REVIEWS, LOADING_REVIEWS } from '../ActionType';
+// import { baseURL } from '../../Utils/baseURL';
+
+
+
 
 
 
 
 export const loadingReview = () => async (dispatch) => {
-    dispatch({ type: LOADING_REVIEWS })
+    dispatch({ type: LOADING_REVIEWS})
 }
 
 export const errorReview = (error) => async (dispatch) => {
@@ -61,8 +67,6 @@ export const editReview = (data) => async (dispatch) => {
         dispatch(errorReview(error.message))
     }
 }
-
-
 
 
 //----------------//

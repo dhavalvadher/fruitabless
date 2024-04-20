@@ -68,6 +68,7 @@ function Header(props) {
             </nav>
           </div>
         </div>
+        
         {/* Navbar End */}
         {/* Modal Search Start */}
         <div className="modal fade" id="searchModal" tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true">

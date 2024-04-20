@@ -1,72 +1,34 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { getproducts } from '../../../admin/component/redux/action/products.action';
-// import { getshop } from '../../../admin/component/redux/action/shop.action';
+import { getproducts } from '../../../redux/action/products.action';
+import { addToCart } from '../../../redux/slice/cart.slice';
+// import { getproducts } from '../../../admin/component/redux/action/products.action';
+// import { addToCart } from '../../../redux/slice/cart.slice';
+// import { getproducts } from '../../../admin/component/redux/action/products.action';
+// import { addToCart } from '../../../admin/component/redux/slice/cart.slice';
+
 
 function Shop(props) {
 
-  // const [fruitsData, setFruitsData] = useState([]);
-  // const [price, setPrice] = useState("");
-  // const [type, settype] = useState("");
-  // const [search, setSearch] = useState('');
 
-  // const dispatch = useDispatch();
-
-  // const shop = useSelector(state => state.shop);
-  // console.log(shop);
-
-  // const getData = async () => {
-  //   try {
-  //     const response = await fetch("http://localhost:4000/fruits");
-  //     const data = await response.json();
-
-  //     let filteredData = data;
-
-  //     console.log(filteredData);
-  //     if (price !== "") {
-  //       filteredData = filteredData.filter((v) => v.price < parseInt(price));
-  //     }
-  //     if (type !== "") {
-  //       filteredData = filteredData.filter((v) => v.type === type);
-  //     }
-
-  //     console.log(type);
-  //     setFruitsData(filteredData);
-  //   } catch (error) {
-  //     console.log(error.message);
-  //   }
-  // }
-
-  // useEffect(() => {
-  //   dispatch(getshop())
-  // }, [])
 
   const products = useSelector(state => state.products);
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   // getData();
-  //   dispatch(getproducts())
-  // }, [price, type])
 
   useEffect(() => {
-  
     dispatch(getproducts())
   }, [])
 
 
-  // const handleFilter = () => {
-  //   let fdata = fruitsData.filter((v) =>
-  //     v.name.toLowerCase().includes(search.toLowerCase()) ||
-  //     v.price.toString().includes(search)
-  //   );
+  const handleproduct = (id) => {
+   
+    dispatch(addToCart({id,count:1}))
+  }
 
 
-  //   return fdata;
-  // };
 
-  // const fdata = handleFilter();
 
 
   return (
@@ -242,30 +204,8 @@ function Shop(props) {
                 </div>
                 <div className="col-lg-9">
                   <div className="row g-4 justify-content-center">
-                    {/* {
-                      shop.fruits.map((v) => (
-                        <div className="col-md-6 col-lg-6 col-xl-4">
-                          <Link to={`/Shop/${v.id}`}>
-                            <div className="rounded position-relative fruite-item">
-                              <div className="fruite-img">
-                                <img src={v.image} className="img-fluid w-100 rounded-top" alt />
-                              </div>
-                              <div className="text-white bg-secondary px-3 py-1 rounded position-absolute" style={{ top: 10, left: 10 }}>Fruits</div>
-                              <div className="p-4 border border-secondary border-top-0 rounded-bottom">
-                                <h4>{v.name}</h4>
-                                <p>{v.description}</p>
-                                <div className="d-flex justify-content-between flex-lg-wrap">
-                                  <p className="text-dark fs-5 fw-bold mb-0">${v.price} / kg</p>
-                                  <a href="#" className="btn border border-secondary rounded-pill px-3 text-primary"><i className="fa fa-shopping-bag me-2 text-primary" /> Add to cart</a>
-                                </div>
-                              </div>
-                            </div>
-                          </Link>
-                        </div>
-                      ))
-                    } */}
 
-{
+                    {
                       products.products.map((v) => (
                         <div className="col-md-6 col-lg-6 col-xl-4">
                           <Link to={`/Shop/${v.id}`}>
@@ -279,7 +219,7 @@ function Shop(props) {
                                 <p>{v.description}</p>
                                 <div className="d-flex justify-content-between flex-lg-wrap">
                                   <p className="text-dark fs-5 fw-bold mb-0">${v.price} / kg</p>
-                                  <a href="#" className="btn border border-secondary rounded-pill px-3 text-primary"><i className="fa fa-shopping-bag me-2 text-primary" /> Add to cart</a>
+                                  <Link onClick={()=>{handleproduct(v.id)}} href="#" className="btn border border-secondary rounded-pill px-3 text-primary"><i className="fa fa-shopping-bag me-2 text-primary" /> Add to cart</Link>
                                 </div>
                               </div>
                             </div>

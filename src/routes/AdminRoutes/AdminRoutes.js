@@ -5,7 +5,7 @@ import Layout from '../../admin/component/Layout/Layout';
 import Reviews from '../../admin/container/Reviews/Reviews';
 import Category from '../../admin/container/Category/Category';
 import { Provider } from 'react-redux';
-import { configstore } from '../../admin/component/redux/store';
+import { configstore } from '../../redux/store';
 import Conter from '../../admin/container/Counter/Conter';
 import Facility from '../../admin/container/Facility/Facility';
 

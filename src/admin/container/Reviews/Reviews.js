@@ -1,25 +1,12 @@
-// import React from 'react';
-
-// function Reviews(props) {
-//     return (
-//         <div>
-//             <h2>Review page</h2>
-//         </div>
-//     );
-// }
-
-// export default Reviews;
-
-
-
+import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, TextField } from '@mui/material';
 import * as React from 'react';
-import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
+// import Button from '@mui/material/Button';
+// import TextField from '@mui/material/TextField';
+// import Dialog from '@mui/material/Dialog';
+// import DialogActions from '@mui/material/DialogActions';
+// import DialogContent from '@mui/material/DialogContent';
+// import DialogContentText from '@mui/material/DialogContentText';
+// import DialogTitle from '@mui/material/DialogTitle';
 import Spinner from 'react-spinkit';
 
 export default function FormDialog() {

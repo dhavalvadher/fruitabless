@@ -12,8 +12,10 @@ import { DataGrid } from '@mui/x-data-grid';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
-import { Delete_data, Edit_data, Facility_data } from '../../component/redux/action/facility.action';
+// import { Delete_data, Edit_data, Facility_data } from '../../component/redux/action/facility.action';
 import Spinner from 'react-spinkit';
+import { Edit_data, Facility_data } from '../../../redux/action/facility.action';
+// import { Edit_data, Facility_data } from '../../component/redux/action/facility.action';
 
 function Facility(props) {
     const [open, setOpen] = React.useState(false);

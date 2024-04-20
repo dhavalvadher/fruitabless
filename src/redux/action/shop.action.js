@@ -1,7 +1,7 @@
 import axios from 'axios';
-
 import { GET_SHOP } from '../ActionType';
-import { baseURL } from '../../../../Utils/baseURL';
+import { baseURL } from '../../Utils/baseURL';
+
 
 
 

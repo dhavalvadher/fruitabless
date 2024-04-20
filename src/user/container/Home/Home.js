@@ -3,7 +3,9 @@ import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { Get_Facility } from '../../../admin/component/redux/action/facility.action';
+import { Get_Facility } from '../../../redux/action/facility.action';
+// import { Get_Facility } from '../../../admin/component/redux/action/facility.action';
+// import { Get_Facility } from '../../../admin/component/redux/action/facility.action';
 
 
 function Home(props) {

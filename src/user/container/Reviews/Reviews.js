@@ -6,7 +6,8 @@ import { DataGrid } from '@mui/x-data-grid';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
-import { addReview, editReview, getReview, getreview, removeReview } from '../../../admin/component/redux/action/reviews.action';
+import { addReview, editReview, getReview, getreview, removeReview } from '../../../redux/action/reviews.action';
+// import { addReview, editReview, getReview, getreview, removeReview } from '../../../admin/component/redux/action/reviews.action';
 
 function Reviews(props) {
     const dispatch = useDispatch();
