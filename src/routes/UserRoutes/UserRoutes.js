@@ -5,13 +5,14 @@ import { Route, Routes } from 'react-router-dom';
 import Home from '../../user/container/Home/Home';
 import Shop from '../../user/container/Shop/Shop';
 import Shop_Detail from '../../user/container/Shop_Detail/Shop_Detail';
-import Card from '../../user/container/Card/Card';
+
 import Checkout from '../../user/container/Checkout/Checkout';
 import Testimonial from '../../user/container/Testimonial/Testimonial';
 import Page from '../../user/container/Page/Page';
 import Contact from '../../user/container/Contact/Contact';
 import PrivateRoutes from '../PrivateRoutes/PrivateRoutes';
 import Reviews from '../../user/container/Reviews/Reviews';
+import Card from '../../user/container/Card/Card';
 
 
 

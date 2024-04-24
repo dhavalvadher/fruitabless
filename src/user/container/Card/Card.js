@@ -1,13 +1,33 @@
-import React from 'react';
+
+
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { decrementQty, incrementQty, removeProducts } from '../../../redux/slice/cart.slice';
+import { getCoupon } from '../../../redux/slice/coupon.slice';
+import { useFormik } from 'formik';
+import { object, string } from 'yup';
+import { current } from '@reduxjs/toolkit';
+
 
 function Card(props) {
 
   const cart = useSelector(state => state.cart);
   const products = useSelector(state => state.products);
 
-  console.log(cart, products);
+
+  const coupon = useSelector(state => state.coupon);
+  // console.log(coupon);
+
+  const dispatch = useDispatch();
+
+
+  // const [discount, setDiscount]
+
+  useEffect(() => {
+    dispatch(getCoupon())
+  }, [])
+
+
 
   const productsdata = cart.cart.map((v) => {
     const product = products.products.find((v1) => v1.id === v.pid)
@@ -16,28 +36,26 @@ function Card(props) {
       ...product, qty: v.qty
     }
   })
-  console.log(productsdata);
 
-  const dispatch = useDispatch();
+
+
 
   const handleInc = (id) => {
     dispatch(incrementQty(id))
   }
-  // const handleDec = (id) => {
-  //   dispatch(decrementQty(id))
-  // }
+
 
   const handleDec = (id) => {
     const pIndex = productsdata.findIndex((p) => p.id === id);
     const currentQty = productsdata[pIndex].qty;
-    
+
     if (currentQty === 1) {
       return;
     }
-  
+
     dispatch(decrementQty(id));
   };
-  
+
 
   const handleremove = (id) => {
     dispatch(removeProducts(id))
@@ -46,6 +64,52 @@ function Card(props) {
   const Total = productsdata.reduce((acc, v) => acc + v.qty * v.price, 0);
   const total = Total * 1
 
+
+  let couponSchema = object({
+    coupon: string().required("Please enter coupon")
+  });
+
+
+  const formik = useFormik({
+    initialValues: {
+      coupon: ""
+    },
+    validationSchema: couponSchema,
+    onSubmit: values => {
+      handleCoupon(values)
+    },
+  });
+
+  const handleCoupon = (data) => {
+    let flag = 0;
+    coupon.coupon.map((v) => {
+      if (v.coupon === data.coupon) {
+        const correntDate = new Date();
+
+        const expiryDate = new Date(v.expiry);
+
+        if (correntDate <= expiryDate) {
+          flag = 1;
+        } else {
+          flag = 2;
+        }
+      }
+    });
+
+
+    if (flag === 0) {
+      formik.setFieldError("coupon", "Coupon is not valid");
+    } else if (flag === 1) {
+      formik.setFieldError("coupon", "Coupon is successfully");
+    } else if (flag === 2) {
+      formik.setFieldError("coupon", "Coupon is expired");
+    }
+  }
+
+ 
+  
+
+  const { values, errors, touched, handleBlur, handleChange, handleSubmit } = formik;
 
   return (
     <div>
@@ -109,7 +173,7 @@ function Card(props) {
                             </div>
                           </div>
                         </td>
-                       
+
                         <td>
                           <p className="mb-0 mt-4">{p.price * p.qty} $</p>
                         </td>
@@ -123,13 +187,33 @@ function Card(props) {
                     ))
                   }
 
-                  
+
                 </tbody>
               </table>
             </div>
             <div className="mt-5">
-              <input type="text" className="border-0 border-bottom rounded me-5 py-3 mb-4" placeholder="Coupon Code" />
-              <button className="btn border-secondary rounded-pill px-4 py-3 text-primary" type="button">Apply Coupon</button>
+              <form onSubmit={handleSubmit}>
+                <input
+                  name='coupon'
+                  type="text"
+
+                  className="border-0 border-bottom rounded me-5 py-3 mb-4"
+                  placeholder="Coupon Code"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.coupon}
+                />
+                {
+                  errors.coupon && touched.coupon ? <span> {errors.coupon}</span> : null
+
+                }
+                <button
+                  className="btn border-secondary rounded-pill px-4 py-3 text-primary"
+                  type="submit"
+                >Apply Coupon
+                </button>
+              </form>
+
             </div>
             <div className="row g-4 justify-content-end">
               <div className="col-8" />
@@ -141,6 +225,10 @@ function Card(props) {
                       <h5 className="mb-0 me-4">Subtotal:</h5>
                       <p className="mb-0">${total}</p>
                     </div>
+                    {/* <div className="d-flex justify-content-between mb-4">
+                      <h5 className="mb-0 me-4">Discount:</h5>
+                      <p className="mb-0">${discount}</p>
+                    </div> */}
                     <div className="d-flex justify-content-between">
                       <h5 className="mb-0 me-4">Shipping</h5>
                       <div className>
@@ -168,6 +256,8 @@ function Card(props) {
 }
 
 export default Card;
+
+
 
 
 

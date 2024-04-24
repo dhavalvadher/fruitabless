@@ -72,52 +72,40 @@
   ],
   "coupon": [
     {
-      "coupon": "coupon 1",
-      "percentage": 95,
-      "expiry": 1713589132,
-      "id": "1"
+      "id": "898b",
+      "coupon": "DHAVAL26",
+      "percentage": 30,
+      "expiry": "2024-05-09"
     },
     {
-      "coupon": "coupon 2",
-      "percentage": 23,
-      "expiry": 1713589072,
-      "id": "2"
+      "id": "cd1b",
+      "coupon": "POLO60",
+      "percentage": 20,
+      "expiry": "2024-05-09"
     },
     {
-      "coupon": "coupon 3",
-      "percentage": 53,
-      "expiry": 1713589012,
-      "id": "3"
+      "id": "1077",
+      "coupon": "SLOW10",
+      "percentage": 10,
+      "expiry": "2024-04-08"
     },
     {
-      "coupon": "coupon 4",
-      "percentage": 85,
-      "expiry": 1713588952,
-      "id": "4"
+      "id": "0afe",
+      "coupon": "FROM26",
+      "percentage": 50,
+      "expiry": "2024-05-09"
     },
     {
-      "coupon": "coupon 5",
-      "percentage": 9,
-      "expiry": 1713588892,
-      "id": "5"
+      "id": "52fc",
+      "coupon": "LOL10",
+      "percentage": 50,
+      "expiry": "2024-05-11"
     },
     {
-      "coupon": "coupon 6",
-      "percentage": 61,
-      "expiry": 1713588832,
-      "id": "6"
-    },
-    {
-      "coupon": "coupon 7",
-      "percentage": 92,
-      "expiry": 1713588772,
-      "id": "7"
-    },
-    {
-      "id": "8c33"
-    },
-    {
-      "id": "6608"
+      "id": "d832",
+      "coupon": "DHAVAL",
+      "percentage": 50,
+      "expiry": "2025-03-26"
     }
   ]
 }

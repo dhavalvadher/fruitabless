@@ -1,12 +1,13 @@
+
+
+
+
+
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getproducts } from '../../../redux/action/products.action';
 import { addToCart } from '../../../redux/slice/cart.slice';
-// import { getproducts } from '../../../admin/component/redux/action/products.action';
-// import { addToCart } from '../../../redux/slice/cart.slice';
-// import { getproducts } from '../../../admin/component/redux/action/products.action';
-// import { addToCart } from '../../../admin/component/redux/slice/cart.slice';
 
 
 function Shop(props) {
@@ -254,4 +255,3 @@ function Shop(props) {
 }
 
 export default Shop;
-
