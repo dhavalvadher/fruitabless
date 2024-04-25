@@ -141,7 +141,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { baseURL } from "../../Utils/baseURL";
-import { BeachAccess } from "@mui/icons-material";
+
 
 const initialState = {
     isLoading: false,
@@ -168,7 +168,7 @@ export const deleteCoupon = createAsyncThunk(
     'coupon/delete',
     async (id) => {
         try {
-            const response = await axios.delete(baseURL + `coupon/${id}`)
+            await axios.delete(baseURL + `coupon/${id}`)
             return id
         } catch (error) {
             return error.massage

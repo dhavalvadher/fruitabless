@@ -37,37 +37,3 @@ function App() {
 
 export default App;
 
-
-// import React, { useState } from 'react'
-// import { useDispatch, useSelector } from 'react-redux';
-// import { increment, decrement, incrementByAmount } from './admin/component/redux/counterSlice';
-
-// const App = () => {
-
-
-//   const counter = useSelector(state => state.counter.value);
-//   const dispatch = useDispatch();
-
-//   // const [counter, setCounter] = useState(0);
-
-//   const incrementCounter = () => {
-//     dispatch(increment());
-//   };
-
-//   const decrementCounter = () => {
-//     dispatch(decrement());
-//   };
-
-//   return (
-//     <div>
-//       <div>counter = {counter}</div>
-
-//       <button onClick={incrementCounter}>increment</button>
-//       <button onClick={decrementCounter}>decrement</button>
-
-//       <button onClick={() => dispatch(incrementByAmount(10))}>Increment By 10</button>
-//     </div>
-//   )
-// }
-
-// export default App

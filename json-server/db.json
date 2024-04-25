@@ -96,16 +96,40 @@
       "expiry": "2024-05-09"
     },
     {
-      "id": "52fc",
-      "coupon": "LOL10",
+      "id": "8d89",
+      "coupon": "DD",
+      "percentage": 50,
+      "expiry": "2025-01-08"
+    },
+    {
+      "id": "fbab",
+      "coupon": "NOW10",
+      "percentage": 50,
+      "expiry": "2024-03-31"
+    },
+    {
+      "id": "e77f",
+      "coupon": "COUPON",
+      "percentage": 100,
+      "expiry": "2024-05-11"
+    },
+    {
+      "id": "2e22",
+      "coupon": "LOLOL",
+      "percentage": "50",
+      "expiry": "2024-05-10"
+    },
+    {
+      "id": "7f58",
+      "coupon": "VADHER",
       "percentage": 50,
       "expiry": "2024-05-11"
     },
     {
-      "id": "d832",
-      "coupon": "DHAVAL",
-      "percentage": 50,
-      "expiry": "2025-03-26"
+      "id": "b757",
+      "coupon": "MORE50",
+      "percentage": 30,
+      "expiry": "2024-11-05"
     }
   ]
 }
