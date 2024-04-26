@@ -332,8 +332,8 @@ function Card(props) {
   })
 
 
-  
-  
+
+
 
   const handleCoupon = (data) => {
     let flag = 0;
@@ -431,7 +431,7 @@ function Card(props) {
                     <tr>
                       <th scope="row">
                         <div className="d-flex align-items-center">
-                          <img src={p.imgSrc} className="img-fluid me-5 rounded-circle" style={{ width: 80, height: 80 }} alt />
+                          <img src={p.image} className="img-fluid me-5 rounded-circle" style={{ width: 80, height: 80 }} alt />
                         </div>
                       </th>
                       <td>
@@ -504,7 +504,6 @@ function Card(props) {
           </div>
 
 
-
           <div className="row g-4 justify-content-end">
             <div className="col-8" />
             <div className="col-sm-8 col-md-7 col-lg-6 col-xl-4">
@@ -513,33 +512,32 @@ function Card(props) {
                   <h1 className="display-6 mb-4">Cart <span className="fw-normal">Total</span></h1>
                   <div className="d-flex justify-content-between mb-4">
                     <h5 className="mb-0 me-4">Subtotal:</h5>
-                    <p className="mb-0">{(subtotal).toFixed(2)}</p>
+                    <p className="mb-0 text-primary">{(subtotal).toFixed(2)}</p>
                   </div>
                   <div className="d-flex justify-content-between">
-                      <h5 className="mb-0 me-4">Shipping</h5>
-                      <div className>
-                        <p className="mb-0">Flat rate: $3.00</p>
-                      </div>
+                    <h5 className="mb-0 me-4">Shipping</h5>
+                    <div className>
+                      <p className="mb-0 text-secondary">Flat rate: $3.00</p>
                     </div>
-                    <p className="mb-0 text-end">Shipping to Pakistan.</p>
+                  </div>
+                  <p className="mb-0 text-end text-secondary">Shipping to Pakistan.</p>
                   <div className="d-flex justify-content-between">
                     <h5 className="mb-0 me-4">Discount is {discount}%</h5>
                     <div className>
-                      <p className="mb-0">{(totaldiscount).toFixed(2)}</p>
+                      <p className="mb-0 text-secondary">{(totaldiscount).toFixed(2)}</p>
                     </div>
                   </div>
-                  
                   <p className="mb-0 text-end"></p>
                 </div>
                 <div className="py-4 mb-4 border-top border-bottom d-flex justify-content-between">
                   <h5 className="mb-0 ps-4 me-4">Total</h5>
-                  <p className="mb-0 pe-4">{(total + 3).toFixed(2)}</p>
-
+                  <p className="mb-0 pe-4 text-success">{(total + 3).toFixed(2)}</p>
                 </div>
                 <button className="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4" type="button">Proceed Checkout</button>
               </div>
             </div>
           </div>
+
         </div>
       </div>
     </div>

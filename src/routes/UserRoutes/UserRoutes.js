@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Header from '../../user/component/Header/Header';
 import Footer from '../../user/component/Footer/Footer';
 import { Route, Routes } from 'react-router-dom';
@@ -13,14 +13,19 @@ import Contact from '../../user/container/Contact/Contact';
 import PrivateRoutes from '../PrivateRoutes/PrivateRoutes';
 import Reviews from '../../user/container/Reviews/Reviews';
 import Card from '../../user/container/Card/Card';
+import { ThemeContext } from '../../context/ThemeContext';
 
 
 
 
 function UserRoutes(props) {
+
+
+    const themeContext = useContext(ThemeContext);
+    console.log(themeContext);
     return (
-        <div>
-            <>
+        <div className={themeContext.theme}>
+           
                 <Header />
                 <Routes>
                     <Route exact path="/" element={<Home />} />
@@ -40,7 +45,7 @@ function UserRoutes(props) {
                     
                 </Routes>
                 <Footer />
-            </>
+           
         </div>
     );
 }

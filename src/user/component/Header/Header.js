@@ -68,7 +68,7 @@
 //             </nav>
 //           </div>
 //         </div>
-        
+
 //         {/* Navbar End */}
 //         {/* Modal Search Start */}
 //         <div className="modal fade" id="searchModal" tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -108,13 +108,16 @@
 
 
 
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-// import { selectTotalQuantity } from '../../../admin/component/redux/slice/cart.slice';
+import { ThemeContext } from '../../../context/ThemeContext';
+// import DarkModeIcon from '@mui/icons-material/DarkMode';
+import DayNightToggle from 'react-day-and-night-toggle'
 
 function Header(props) {
-  // const totalQuantity = useSelector(selectTotalQuantity);
+  const [isDarkMode, setIsDarkMode] = useState(false)
+
 
   const cart = useSelector(state => state.cart)
   console.log(cart);
@@ -122,33 +125,50 @@ function Header(props) {
   const totalQuantity = cart.cart.reduce((acc, v) => acc + v.qty, 0);
 
 
+  const themeContext = useContext(ThemeContext);
+  console.log(themeContext);
+  const handletheme = () => {
+    themeContext.toggleTheme(themeContext.theme);
+  }
+
 
 
   return (
     <div>
       <div>
         {/* Navbar start */}
-        <div className="container-fluid fixed-top">
+        <div className={`container-fluid fixed-top ${themeContext.theme}`}>
           <div className="container topbar bg-primary d-none d-lg-block">
             <div className="d-flex justify-content-between">
               <div className="top-info ps-2">
                 <small className="me-3"><i className="fas fa-map-marker-alt me-2 text-secondary" /> <a href="#" className="text-white">123 Street, New York</a></small>
                 <small className="me-3"><i className="fas fa-envelope me-2 text-secondary" /><a href="#" className="text-white">Email@Example.com</a></small>
+
               </div>
               <div className="top-link pe-2">
                 <a href="#" className="text-white"><small className="text-white mx-2">Privacy Policy</small>/</a>
                 <a href="#" className="text-white"><small className="text-white mx-2">Terms of Use</small>/</a>
                 <a href="#" className="text-white"><small className="text-white ms-2">Sales and Refunds</small></a>
               </div>
+              {/* <DarkModeIcon onClick={handletheme} style={{ transition: 'all 0.3s ease-in-out' }}>CHANGE THEME</DarkModeIcon> */}
+              <div>
+                <DayNightToggle
+                  onChange={() => setIsDarkMode(!isDarkMode)}
+                  checked={isDarkMode}
+                  onClick={handletheme}
+                />
+              </div>
             </div>
+
           </div>
+
           <div className="container px-0">
-            <nav className="navbar navbar-light bg-white navbar-expand-xl">
+            <nav className={`navbar navbar-light bg-white navbar-expand-xl ${themeContext.theme}`}>
               <a href="index.html" className="navbar-brand"><h1 className="text-primary display-6">Fruitables</h1></a>
               <button className="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span className="fa fa-bars text-primary" />
               </button>
-              <div className="collapse navbar-collapse bg-white" id="navbarCollapse">
+              <div className={`collapse navbar-collapse ${themeContext.theme}`} id="navbarCollapse">
                 <div className="navbar-nav mx-auto">
                   <NavLink to={"/"} className="nav-item nav-link active">Home</NavLink>
                   <NavLink to={"/Shop"} className="nav-item nav-link">Shop</NavLink>
@@ -178,12 +198,14 @@ function Header(props) {
             </nav>
           </div>
         </div>
-        
+
         {/* Navbar End */}
         {/* Modal Search Start */}
         <div className="modal fade" id="searchModal" tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div className="modal-dialog modal-fullscreen">
             <div className="modal-content rounded-0">
+
+
               <div className="modal-header">
                 <h5 className="modal-title" id="exampleModalLabel">Search by keyword</h5>
                 <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" />
