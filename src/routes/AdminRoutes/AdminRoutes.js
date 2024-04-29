@@ -14,6 +14,7 @@ import Coupon from '../../admin/container/Coupon/Coupon';
 
 
 
+
 function AdminRoutes(props) {
   
     return (
@@ -27,6 +28,7 @@ function AdminRoutes(props) {
                     <Route exact path="/Counter" element={<Conter/>}/>
                     <Route exact path="/Facility" element={<Facility/>}/>
                     <Route exact path="/Coupon" element={<Coupon/>}/>
+                  
                 </Routes>
             </Layout>
          

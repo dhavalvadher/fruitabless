@@ -25,6 +25,7 @@ import { NavLink } from 'react-router-dom';
 import HourglassFullIcon from '@mui/icons-material/HourglassFull';
 import BreakfastDiningIcon from '@mui/icons-material/BreakfastDining';
 import PercentIcon from '@mui/icons-material/Percent';
+import PrecisionManufacturingIcon from '@mui/icons-material/PrecisionManufacturing';
 
 const drawerWidth = 240;
 
@@ -111,6 +112,7 @@ export default function Layout({children}) {
     {title:"Counter",icon:<HourglassFullIcon/>,to:"/admin/Counter"},
     {title:"Facility",icon:<BreakfastDiningIcon/>,to:"/admin/Facility"},
     {title:"coupon",icon:<PercentIcon/>,to:"/admin/coupon"},
+    {title:"Bestseller",icon:<PrecisionManufacturingIcon/>,to:"/admin/Bestseller"},
   ]
 
   return (
