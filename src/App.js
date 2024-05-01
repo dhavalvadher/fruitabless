@@ -8,6 +8,7 @@ import { configstore } from './redux/store';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react'
 import { ThemeProvider } from './context/ThemeContext';
+import { ContactProvider } from './context/ContactContext';
 // import { BestsellerProvider } from './context/bestsellerContext';
 
 
@@ -20,6 +21,7 @@ function App() {
 
   return (
     <>
+    <ContactProvider>
     <ThemeProvider>
      
       <Provider store={store}>
@@ -38,6 +40,7 @@ function App() {
         </PersistGate>
       </Provider>
       </ThemeProvider>
+      </ContactProvider>
     </>
   );
 }

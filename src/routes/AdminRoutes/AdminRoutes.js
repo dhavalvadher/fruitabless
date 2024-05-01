@@ -9,6 +9,7 @@ import { configstore } from '../../redux/store';
 import Conter from '../../admin/container/Counter/Conter';
 import Facility from '../../admin/container/Facility/Facility';
 import Coupon from '../../admin/container/Coupon/Coupon';
+import Contact from '../../admin/container/Contact/Contact';
 
 
 
@@ -28,7 +29,7 @@ function AdminRoutes(props) {
                     <Route exact path="/Counter" element={<Conter/>}/>
                     <Route exact path="/Facility" element={<Facility/>}/>
                     <Route exact path="/Coupon" element={<Coupon/>}/>
-                  
+                    <Route exact path="/Contact" element={<Contact/>}/>
                 </Routes>
             </Layout>
          
