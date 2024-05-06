@@ -1,25 +1,13 @@
-// import React from 'react';
-
-// function Reviews(props) {
-//     return (
-//         <div>
-//             <h2>Review page</h2>
-//         </div>
-//     );
-// }
-
-// export default Reviews;
-
-
-
+import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, TextField } from '@mui/material';
 import * as React from 'react';
-import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
+// import Button from '@mui/material/Button';
+// import TextField from '@mui/material/TextField';
+// import Dialog from '@mui/material/Dialog';
+// import DialogActions from '@mui/material/DialogActions';
+// import DialogContent from '@mui/material/DialogContent';
+// import DialogContentText from '@mui/material/DialogContentText';
+// import DialogTitle from '@mui/material/DialogTitle';
+import Spinner from 'react-spinkit';
 
 export default function FormDialog() {
   const [open, setOpen] = React.useState(false);
@@ -33,48 +21,56 @@ export default function FormDialog() {
   };
 
   return (
-    <React.Fragment>
-      <Button variant="outlined" onClick={handleClickOpen}>
-        Open form dialog
-      </Button>
-      <Dialog
-        open={open}
-        onClose={handleClose}
-        PaperProps={{
-          component: 'form',
-          onSubmit: (event) => {
-            event.preventDefault();
-            const formData = new FormData(event.currentTarget);
-            const formJson = Object.fromEntries(formData.entries());
-            const email = formJson.email;
-            console.log(email);
-            handleClose();
-          },
-        }}
-      >
-        <DialogTitle>Subscribe</DialogTitle>
-        <DialogContent>
-          <DialogContentText>
-            To subscribe to this website, please enter your email address here. We
-            will send updates occasionally.
-          </DialogContentText>
-          <TextField
-            autoFocus
-            required
-            margin="dense"
-            id="name"
-            name="email"
-            label="Email Address"
-            type="email"
-            fullWidth
-            variant="standard"
-          />
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
-          <Button type="submit">Subscribe</Button>
-        </DialogActions>
-      </Dialog>
-    </React.Fragment>
+    <>
+      {
+        FormDialog.isLoading ? <p>
+          <Spinner name="line-scale-pulse-out" color="aqua" />
+        </p> :
+          <React.Fragment>
+            <Button variant="outlined" onClick={handleClickOpen}>
+              Open form dialog
+            </Button>
+            <Dialog
+              open={open}
+              onClose={handleClose}
+              PaperProps={{
+                component: 'form',
+                onSubmit: (event) => {
+                  event.preventDefault();
+                  const formData = new FormData(event.currentTarget);
+                  const formJson = Object.fromEntries(formData.entries());
+                  const email = formJson.email;
+                  console.log(email);
+                  handleClose();
+                },
+              }}
+            >
+              <DialogTitle>Subscribe</DialogTitle>
+              <DialogContent>
+                <DialogContentText>
+                  To subscribe to this website, please enter your email address here. We
+                  will send updates occasionally.
+                </DialogContentText>
+                <TextField
+                  autoFocus
+                  required
+                  margin="dense"
+                  id="name"
+                  name="email"
+                  label="Email Address"
+                  type="email"
+                  fullWidth
+                  variant="standard"
+                />
+              </DialogContent>
+              <DialogActions>
+                <Button onClick={handleClose}>Cancel</Button>
+                <Button type="submit">Subscribe</Button>
+              </DialogActions>
+            </Dialog>
+          </React.Fragment>
+      }
+    </>
+
   );
 }

@@ -1,52 +1,35 @@
+
+
+
+
+
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { getproducts } from '../../../redux/action/products.action';
+import { addToCart } from '../../../redux/slice/cart.slice';
+
 
 function Shop(props) {
 
-  const [fruitsData, setFruitsData] = useState([]);
-  const [price, setPrice] = useState("");
-  const [type, settype] = useState("");
-  const [search, setSearch] = useState('');
 
 
-  const getData = async () => {
-    try {
-      const response = await fetch("http://localhost:4000/fruits");
-      const data = await response.json();
+  const products = useSelector(state => state.products);
+  const dispatch = useDispatch();
 
-      let filteredData = data;
-     
-      console.log(filteredData);
-      if (price !== "") {
-        filteredData = filteredData.filter((v) => v.price < parseInt(price));
-      }
-      if (type !== "") {
-        filteredData = filteredData.filter((v) => v.type === type);
-      }
-
-      console.log(type);
-      setFruitsData(filteredData);
-    } catch (error) {
-      console.log(error.message);
-    }
-  }
 
   useEffect(() => {
-    getData();
-  }, [price, type])
+    dispatch(getproducts())
+  }, [])
 
 
-  const handleFilter = () => {
-    let fdata = fruitsData.filter((v) =>
-      v.name.toLowerCase().includes(search.toLowerCase()) ||
-      v.price.toString().includes(search)
-    );
+  const handleproduct = (id) => {
+   
+    dispatch(addToCart({id,count:1}))
+  }
 
 
-    return fdata;
-  };
 
-  const fdata = handleFilter();
 
 
   return (
@@ -63,8 +46,8 @@ function Shop(props) {
                   <div className="input-group w-100 mx-auto d-flex">
                     <input
                       name='search'
-                      value={search}
-                      onChange={(event) => setSearch(event.target.value)}
+                      // value={search}
+                      // onChange={(event) => setSearch(event.target.value)}
                       type="search"
                       className="form-control p-3"
                       placeholder="keywords"
@@ -128,7 +111,8 @@ function Shop(props) {
                     <div className="col-lg-12">
                       <div className="mb-3">
                         <h4 className="mb-2">Price</h4>
-                        <input type="range" onChange={(event) => setPrice(event.target.value)} className="form-range w-100" id="rangeInput" name="rangeInput" min={0} max={10} defaultValue={0} oninput="amount.value=rangeInput.value" />
+                        {/* <input type="range" onChange={(event) => setPrice(event.target.value)} className="form-range w-100" id="rangeInput" name="rangeInput" min={0} max={10} defaultValue={0} oninput="amount.value=rangeInput.value" /> */}
+                        <input type="range" className="form-range w-100" id="rangeInput" name="rangeInput" min={0} max={10} defaultValue={0} oninput="amount.value=rangeInput.value" />
                         <output id="amount" name="amount" min-velue={0} max-value={10} htmlFor="rangeInput">0</output>
 
                       </div>
@@ -221,8 +205,9 @@ function Shop(props) {
                 </div>
                 <div className="col-lg-9">
                   <div className="row g-4 justify-content-center">
+
                     {
-                      fdata.map((v) => (
+                      products.products.map((v) => (
                         <div className="col-md-6 col-lg-6 col-xl-4">
                           <Link to={`/Shop/${v.id}`}>
                             <div className="rounded position-relative fruite-item">
@@ -235,7 +220,7 @@ function Shop(props) {
                                 <p>{v.description}</p>
                                 <div className="d-flex justify-content-between flex-lg-wrap">
                                   <p className="text-dark fs-5 fw-bold mb-0">${v.price} / kg</p>
-                                  <a href="#" className="btn border border-secondary rounded-pill px-3 text-primary"><i className="fa fa-shopping-bag me-2 text-primary" /> Add to cart</a>
+                                  <Link onClick={()=>{handleproduct(v.id)}} href="#" className="btn border border-secondary rounded-pill px-3 text-primary"><i className="fa fa-shopping-bag me-2 text-primary" /> Add to cart</Link>
                                 </div>
                               </div>
                             </div>
