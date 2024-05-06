@@ -288,6 +288,7 @@ import { useFormik } from 'formik';
 import { object, string } from 'yup';
 import { getCoupon } from '../../../redux/slice/coupon.slice';
 import { decrementQty, incrementQty, removeProducts } from '../../../redux/slice/cart.slice';
+import Button from '../../component/UI/Button/Button';
 
 
 function Card(props) {
@@ -533,7 +534,8 @@ function Card(props) {
                   <h5 className="mb-0 ps-4 me-4">Total</h5>
                   <p className="mb-0 pe-4 text-success">{(total + 3).toFixed(2)}</p>
                 </div>
-                <button className="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4" type="button">Proceed Checkout</button>
+                {/* <Button> </Button> */}
+                <Button>Proceed Checkout</Button>
               </div>
             </div>
           </div>

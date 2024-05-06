@@ -5,6 +5,7 @@ import 'owl.carousel/dist/assets/owl.theme.default.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { Get_Facility } from '../../../redux/action/facility.action';
 import { ThemeContext } from '../../../context/ThemeContext';
+import Button from '../../component/UI/Button/Button';
 // import { Get_Facility } from '../../../admin/component/redux/action/facility.action';
 // import { Get_Facility } from '../../../admin/component/redux/action/facility.action';
 
@@ -196,7 +197,9 @@ function Home(props) {
                               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
                               <div className="d-flex justify-content-between flex-lg-wrap">
                                 <p className="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p>
-                                <a href="#" className="btn border border-secondary rounded-pill px-3 text-primary"><i className="fa fa-shopping-bag me-2 text-primary" /> Add to cart</a>
+                                <Button>
+                                <i className="fa fa-shopping-bag me-2 text-primary" /> Add to cart
+                                </Button>
                               </div>
                             </div>
                           </div>
@@ -212,7 +215,9 @@ function Home(props) {
                               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
                               <div className="d-flex justify-content-between flex-lg-wrap">
                                 <p className="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p>
-                                <a href="#" className="btn border border-secondary rounded-pill px-3 text-primary"><i className="fa fa-shopping-bag me-2 text-primary" /> Add to cart</a>
+                                <Button>
+                                <i className="fa fa-shopping-bag me-2 text-primary" /> Add to cart
+                                </Button>
                               </div>
                             </div>
                           </div>
@@ -228,7 +233,9 @@ function Home(props) {
                               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
                               <div className="d-flex justify-content-between flex-lg-wrap">
                                 <p className="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p>
-                                <a href="#" className="btn border border-secondary rounded-pill px-3 text-primary"><i className="fa fa-shopping-bag me-2 text-primary" /> Add to cart</a>
+                                <Button>
+                                <i className="fa fa-shopping-bag me-2 text-primary" /> Add to cart
+                                </Button>
                               </div>
                             </div>
                           </div>
@@ -244,7 +251,9 @@ function Home(props) {
                               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
                               <div className="d-flex justify-content-between flex-lg-wrap">
                                 <p className="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p>
-                                <a href="#" className="btn border border-secondary rounded-pill px-3 text-primary"><i className="fa fa-shopping-bag me-2 text-primary" /> Add to cart</a>
+                                <Button>
+                                <i className="fa fa-shopping-bag me-2 text-primary" /> Add to cart
+                                </Button>
                               </div>
                             </div>
                           </div>
@@ -260,7 +269,9 @@ function Home(props) {
                               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
                               <div className="d-flex justify-content-between flex-lg-wrap">
                                 <p className="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p>
-                                <a href="#" className="btn border border-secondary rounded-pill px-3 text-primary"><i className="fa fa-shopping-bag me-2 text-primary" /> Add to cart</a>
+                                <Button>
+                                <i className="fa fa-shopping-bag me-2 text-primary" /> Add to cart
+                                </Button>
                               </div>
                             </div>
                           </div>
@@ -276,7 +287,9 @@ function Home(props) {
                               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
                               <div className="d-flex justify-content-between flex-lg-wrap">
                                 <p className="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p>
-                                <a href="#" className="btn border border-secondary rounded-pill px-3 text-primary"><i className="fa fa-shopping-bag me-2 text-primary" /> Add to cart</a>
+                                <Button>
+                                <i className="fa fa-shopping-bag me-2 text-primary" /> Add to cart
+                                </Button>
                               </div>
                             </div>
                           </div>
@@ -292,7 +305,9 @@ function Home(props) {
                               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
                               <div className="d-flex justify-content-between flex-lg-wrap">
                                 <p className="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p>
-                                <a href="#" className="btn border border-secondary rounded-pill px-3 text-primary"><i className="fa fa-shopping-bag me-2 text-primary" /> Add to cart</a>
+                                <Button>
+                                <i className="fa fa-shopping-bag me-2 text-primary" /> Add to cart
+                                </Button>
                               </div>
                             </div>
                           </div>
@@ -308,7 +323,9 @@ function Home(props) {
                               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
                               <div className="d-flex justify-content-between flex-lg-wrap">
                                 <p className="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p>
-                                <a href="#" className="btn border border-secondary rounded-pill px-3 text-primary"><i className="fa fa-shopping-bag me-2 text-primary" /> Add to cart</a>
+                                <Button>
+                                <i className="fa fa-shopping-bag me-2 text-primary" /> Add to cart
+                                </Button>
                               </div>
                             </div>
                           </div>
