@@ -493,11 +493,12 @@ function Card(props) {
                 onBlur={handleBlur}
                 name="coupon"
               />
-              <button
+              <Button
+                btnDisable ={true}
                 className="btn border-secondary rounded-pill px-4 py-3 text-primary"
                 type="submit"
               >Apply Coupon
-              </button>
+              </Button>
             </form>
             {
               errors.coupon && touched.coupon ? <span>{errors.coupon}</span> : null
@@ -534,8 +535,9 @@ function Card(props) {
                   <h5 className="mb-0 ps-4 me-4">Total</h5>
                   <p className="mb-0 pe-4 text-success">{(total + 3).toFixed(2)}</p>
                 </div>
-                {/* <Button> </Button> */}
-                <Button>Proceed Checkout</Button>
+                <Button btnType="primary">
+                  Proceed Checkout
+                </Button>
               </div>
             </div>
           </div>
