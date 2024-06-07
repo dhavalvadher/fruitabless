@@ -136,6 +136,7 @@ function Checkout(props) {
                                                         </div>
                                                     </td>
                                                 </tr>
+                                           
                                                 <tr>
                                                     <th scope="row">
                                                     </th>

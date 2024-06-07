@@ -16,8 +16,8 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
+// import InboxIcon from '@mui/icons-material/MoveToInbox';
+// import MailIcon from '@mui/icons-material/Mail';
 import AppleIcon from '@mui/icons-material/Apple';
 import RateReviewIcon from '@mui/icons-material/RateReview';
 import CategoryIcon from '@mui/icons-material/Category';
@@ -26,6 +26,7 @@ import HourglassFullIcon from '@mui/icons-material/HourglassFull';
 import BreakfastDiningIcon from '@mui/icons-material/BreakfastDining';
 import PercentIcon from '@mui/icons-material/Percent';
 import PermContactCalendarOutlinedIcon from '@mui/icons-material/PermContactCalendarOutlined';
+import CategoryOutlinedIcon from '@mui/icons-material/CategoryOutlined';
 
 const drawerWidth = 240;
 
@@ -109,10 +110,11 @@ export default function Layout({children}) {
     {title:"product",icon:<AppleIcon/>,to:"/admin/Products"},
     {title:"reviews",icon:<RateReviewIcon/>,to:"/admin/Reviews"},
     {title:"Categories",icon:<CategoryIcon/>,to:"/admin/Category"},
+    {title:"SubCategories",icon:<CategoryOutlinedIcon/>,to:"/admin/Subcategory"},
     {title:"Counter",icon:<HourglassFullIcon/>,to:"/admin/Counter"},
     {title:"Facility",icon:<BreakfastDiningIcon/>,to:"/admin/Facility"},
     {title:"coupon",icon:<PercentIcon/>,to:"/admin/coupon"},
-    {title:"Contact",icon:<PermContactCalendarOutlinedIcon/>,to:"/admin/Contact"},
+    {title:"Contact",icon:<PermContactCalendarOutlinedIcon/>,to:"/admin/Contact"}, 
   ]
 
   return (
