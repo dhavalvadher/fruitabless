@@ -6,8 +6,9 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { getproducts } from '../../../redux/action/products.action';
+// import { getproducts } from '../../../redux/action/products.action';
 import { addToCart } from '../../../redux/slice/cart.slice';
+import { getProducts } from '../../../redux/action/products.action';
 
 
 function Shop(props) {
@@ -19,7 +20,7 @@ function Shop(props) {
 
 
   useEffect(() => {
-    dispatch(getproducts())
+    dispatch(getProducts())
   }, [])
 
 

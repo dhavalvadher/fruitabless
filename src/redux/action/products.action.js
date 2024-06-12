@@ -1,92 +1,56 @@
 import axios from 'axios';
+import { 
+    GET_PRODUCTS, 
+    ADD_PRODUCTS, 
+    DELETE_PRODUCTS, 
+    EDIT_PRODUCTS, 
+    LOADING_PRODUCTS, 
+    ERROR_PRODUCTS 
+} from '../ActionType';
 
 
-
-import { ADD_PRODUCTS, DELETE_PRODUCTS, EDIT_PRODUCTS, ERROR_PRODUCTS, GET_PRODUCTS, LOADING_PRODUCTS } from '../ActionType';
-import { baseURL } from '../../Utils/baseURL';
-
-
-
-const loadingProducts = () => async (dispatch) => {
-    dispatch({ type: LOADING_PRODUCTS })
-}
-
-const errorProducts = (error) => async (dispatch) => {
-    dispatch({ type: ERROR_PRODUCTS, payload: error })
-}
-
-
-export const getproducts = () => async (dispatch) => {
+export const getProducts = () => async (dispatch) => {
+    dispatch({ type: LOADING_PRODUCTS });
     try {
-        dispatch(loadingProducts())
-        await axios.get(baseURL + "fruits")
-            .then((response) => {
-
-                setTimeout(() => {
-                    dispatch({ type: GET_PRODUCTS, payload: response.data })
-                }, 2000);
-
-
-            })
-            .catch((error) => {
-
-                dispatch(errorProducts(error.message))
-            })
+        const response = await axios.get("http://localhost:8000/api/v1/products/list-products");
+        dispatch({ type: GET_PRODUCTS, payload: response.data.data });
     } catch (error) {
-        dispatch(errorProducts(error.message))
+        dispatch({ type: ERROR_PRODUCTS, payload: error.message });
+        console.error("Failed to fetch products:", error);
     }
+};
 
 
-}
-
-
-export const addProducts = (data) => async (dispatch) => {
+export const addProducts = (product) => async (dispatch) => {
+    dispatch({ type: LOADING_PRODUCTS });
     try {
-        dispatch(loadingProducts())
-        await axios.post(baseURL + "fruits", data)
-            .then((response) => {
-                setTimeout(() => {
-                    dispatch({ type: ADD_PRODUCTS, payload: response.data })
-                }, 2000);
-            })
-            .catch((error) => dispatch(errorProducts(error.message)))
+        const response = await axios.post("http://localhost:8000/api/v1/products/create-product", product);
+        dispatch({ type: ADD_PRODUCTS, payload: response.data.data });
     } catch (error) {
-        dispatch(errorProducts(error.message))
+        dispatch({ type: ERROR_PRODUCTS, payload: error.message });
+        console.error("Failed to add product:", error);
     }
-}
+};
 
+
+export const editProducts = (product) => async (dispatch) => {
+    dispatch({ type: LOADING_PRODUCTS });
+    try {
+        const response = await axios.put(`http://localhost:8000/api/v1/products/update-product/${product._id}`, product);
+        dispatch({ type: EDIT_PRODUCTS, payload: response.data.data });
+    } catch (error) {
+        dispatch({ type: ERROR_PRODUCTS, payload: error.message });
+        console.error("Failed to edit product:", error);
+    }
+};
 
 export const deleteProducts = (id) => async (dispatch) => {
+    dispatch({ type: LOADING_PRODUCTS });
     try {
-        dispatch(loadingProducts())
-        await axios.delete(baseURL + "fruits/" + id)
-            .then((response) => {
-
-                setTimeout(() => {
-                    dispatch({ type: DELETE_PRODUCTS, payload: id })
-                }, 2000);
-            })
-            .catch((error) => dispatch(errorProducts(error.message)))
+        await axios.delete(`http://localhost:8000/api/v1/products/delete-product/${id}`);
+        dispatch({ type: DELETE_PRODUCTS, payload: id });
     } catch (error) {
-        dispatch(errorProducts(error.message))
+        dispatch({ type: ERROR_PRODUCTS, payload: error.message });
+        console.error("Failed to delete product:", error);
     }
-}
-
-
-export const editProducts = (data) => async (dispatch) => {
-    try {
-        dispatch(loadingProducts())
-        await axios.put(baseURL + "fruits/" + data.id, data)
-            .then((response) => {
-                setTimeout(() => {
-                    dispatch({ type: EDIT_PRODUCTS, payload: data })
-                }, 2000);
-            })
-            .catch((error) => dispatch(errorProducts(error.message)))
-    } catch (error) {
-        dispatch(errorProducts(error.message))
-    }
-}
-
-
-
+};

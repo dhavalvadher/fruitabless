@@ -26,7 +26,7 @@ function Subcategory() {
   const [open, setOpen] = React.useState(false);
   const [data, setData] = React.useState([]);
   const [update, setUpdate] = useState(null);
-  const [categoryData, setCategoryData] = useState([]);
+  
   console.log("data: ", data);
 
   const handleClickOpen = () => {
@@ -195,7 +195,6 @@ function Subcategory() {
   const handleDelete = (id) => {
     dispatch(deleteSubcategory(id));
   };
-
   return (
     <div>
       <React.Fragment>

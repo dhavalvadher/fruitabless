@@ -26,7 +26,8 @@ export const rootReducer = combineReducers({
     coupon: couponSlice,
     couponInCart: couponSlice,
     categories: categoryReducer,
-    subcategories: subcategorySlice
+    subcategories: subcategorySlice,
+    
 
 
 
